@@ -16,14 +16,14 @@
       }
     },
     created(){
-      this.callApi()
+      this.apiMovieSearch()
     },
     methods: {
       // CHIAMATA API MOVIE
-      callApi(){
-        axios.get("https://api.themoviedb.org/3/movie/550?api_key=70766b0348a90acc7e1c8784e2eea324").then((res)=>{
-          console.log(res.data)
-          this.store.arrayMovie = res.data.data
+      apiMovieSearch(){
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=70766b0348a90acc7e1c8784e2eea324&query=${store.inputSearch}`).then((res)=>{
+          console.log(res.data.results)
+          store.arrayMovie = res.data.results
         })  
       }
     }
@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <HeaderComp/>
+  <HeaderComp @startSearch="apiMovieSearch()"/>
   <MainComp/>
 </template>
 
