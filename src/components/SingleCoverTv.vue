@@ -1,6 +1,6 @@
 <script>
     export default{
-        name: "SingleCover",
+        name: "SingleCoverTv",
         props: ["coverDates"],
         created(){
         }
@@ -12,8 +12,8 @@
     <div class="card m-4 col-lg-3">
         <!-- <img src="https://image.tmdb.org/t/p/w300{{coverDates.backdrop_path}}" alt="" class="card-img-top"> -->
         <div class="card-body text-center align-items-center">
-            <h5 class="card-title">{{coverDates.title}}</h5>
-            <p class="card-text">({{coverDates.original_title}})</p>
+            <h5 class="card-title">{{coverDates.name}}</h5>
+            <p class="card-text">({{coverDates.original_name}})</p>
             <p class="card-text">{{coverDates.release_date}}</p>
             <div class="scroll text-start">
                 <p class="card-text">({{coverDates.overview}})</p>    
