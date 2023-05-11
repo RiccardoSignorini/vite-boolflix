@@ -36,6 +36,19 @@
                     return moment(this.coverDates.first_air_date, 'YYYY/MM/DD').format('DD/MM/YYYY');
                 }
                 
+            },
+
+            // STAMPA BANDIERE
+            flags(x){
+                x = x.toUpperCase()
+
+                if(x=="EN"){
+                    x="GB"
+                    return `https://flagsapi.com/${x}/flat/64.png`
+                } else{
+                    return `https://flagsapi.com/${x}/flat/64.png`
+                }
+                
             }
 
             // PER RIMUOVERE GLI OVERVIEW CHE NON CI SONO
@@ -64,7 +77,11 @@
             <div class="scroll text-start p-3">
                 <p class="card-text">({{coverDates.overview}})</p>    
             </div>
-            <span class="card-text">Lenguage: {{coverDates.original_language}}</span>
+            <div class="my-3">
+                <span class="card-text">Original lenguage: </span>
+                <img :src="flags(coverDates.original_language)" alt="" height="30">    
+            </div>
+            
         </div>
     </div>    
 </template>
