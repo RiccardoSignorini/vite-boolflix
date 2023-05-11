@@ -30,7 +30,12 @@
 
             // INVERTIRE LA DATA
             invertDateFormat() {
-                return moment(this.coverDates.release_date, 'YYYY/MM/DD').format('DD/MM/YYYY');
+                if(this.coverDates.release_date){
+                    return moment(this.coverDates.release_date, 'YYYY/MM/DD').format('DD/MM/YYYY');    
+                } else{
+                    return moment(this.coverDates.first_air_date, 'YYYY/MM/DD').format('DD/MM/YYYY');
+                }
+                
             }
 
             // PER RIMUOVERE GLI OVERVIEW CHE NON CI SONO
@@ -48,7 +53,7 @@
 
 <template>
     <div class="card m-4 col-lg-3">
-        <img :src="`https://image.tmdb.org/t/p/w342{{coverDates.poster_path}}`" :alt="titleName()" class="card-img-top">
+        <img :src="`https://image.tmdb.org/t/p/w342${coverDates.poster_path}`" :alt="titleName()" class="card-img-top">
         <div class="card-body text-center align-items-center">
             <h5 class="card-title">{{titleName()}}</h5>
             <span class="card-text">({{originalTitleName()}})</span>
@@ -56,7 +61,7 @@
                 <i v-for="n in 5" :class=" (n<=mark()) ? 'fa-solid' : 'fa-regular' " class="fa-star"></i>
             </div>
             <p class="card-text">Release in {{invertDateFormat()}}</p>
-            <div class="scroll text-start">
+            <div class="scroll text-start p-3">
                 <p class="card-text">({{coverDates.overview}})</p>    
             </div>
             <span class="card-text">Lenguage: {{coverDates.original_language}}</span>
@@ -66,11 +71,11 @@
 
 <style scoped lang="scss">
     .card{
-        height: 350px;
+        
         background-color: black;
         border: 1px solid white;
         .scroll{
-            height: 120px;
+            height: 140px;
             border: 1px solid red;
             overflow: scroll;
         }
