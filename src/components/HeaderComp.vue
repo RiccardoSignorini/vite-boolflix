@@ -26,6 +26,11 @@
 <style scoped lang="scss">
     #header{
         height: 10vh;
+
+        h2{
+            color: red;
+        }
+        
         button, input{
             border: 0;
         }    

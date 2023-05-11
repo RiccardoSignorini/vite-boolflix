@@ -1,13 +1,13 @@
 <script>
     import SingleCover from "./SingleCover.vue"
-    import SingleCoverTv from "./SingleCoverTv.vue"
+    // import SingleCoverTv from "./SingleCoverTv.vue"
     import {store} from "../store"
 
     export default{
         name: "MainComp",
         components: {
             SingleCover,
-            SingleCoverTv
+            // SingleCoverTv
         },
         data(){
             return{
@@ -25,7 +25,7 @@
                 <h3>FILM</h3>
                 <SingleCover v-for="(elem,index) in store.arrayMovie" :key="index" :coverDates="elem"/>
                 <h3>SERIE TV</h3>
-                <SingleCoverTv v-for="(elem,index) in store.arrayTv" :key="index" :coverDates="elem"/>
+                <SingleCover v-for="(elem,index) in store.arrayTv" :key="index" :coverDates="elem"/>
             </div>
         </div>
     </div>

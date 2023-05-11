@@ -2,7 +2,24 @@
     export default{
         name: "SingleCover",
         props: ["coverDates"],
-        created(){
+        methods: {
+            // PER NAME/TITLE ORIGINALI
+            originalTitleName(){
+                if(this.coverDates.original_title){
+                    return this.coverDates.original_title
+                } else{
+                    return this.coverDates.original_name
+                }
+            },
+
+            // PER NAME/TITLE
+            titleName(){
+                if(this.coverDates.title){
+                    return this.coverDates.title
+                } else{
+                    return this.coverDates.name
+                }
+            }
         }
     }
     
@@ -10,10 +27,10 @@
 
 <template>
     <div class="card m-4 col-lg-3">
-        <!-- <img src="https://image.tmdb.org/t/p/w300{{coverDates.backdrop_path}}" alt="" class="card-img-top"> -->
+        <img :src="`https://image.tmdb.org/t/p/w500{{coverDates.poster_path}}`" :alt="originalTitleName()" class="card-img-top">
         <div class="card-body text-center align-items-center">
-            <h5 class="card-title">{{coverDates.title}}</h5>
-            <p class="card-text">({{coverDates.original_title}})</p>
+            <h5 class="card-title">{{titleName()}}</h5>
+            <p class="card-text">({{originalTitleName()}})</p>
             <p class="card-text">{{coverDates.release_date}}</p>
             <div class="scroll text-start">
                 <p class="card-text">({{coverDates.overview}})</p>    
