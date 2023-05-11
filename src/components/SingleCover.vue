@@ -1,4 +1,6 @@
 <script>
+import { markRaw } from 'vue'
+
     export default{
         name: "SingleCover",
         props: ["coverDates"],
@@ -19,6 +21,11 @@
                 } else{
                     return this.coverDates.name
                 }
+            },
+
+            // VOTO TRASFORMATO DA 1 A 5
+            mark(){
+                return Math.ceil(this.coverDates.vote_average/2)
             }
         }
     }
@@ -35,7 +42,7 @@
             <div class="scroll text-start">
                 <p class="card-text">({{coverDates.overview}})</p>    
             </div>
-            <span class="card-text">Mark: {{coverDates.vote_average}}</span>
+            <span class="card-text">Mark: {{mark()}}</span>
             <span class="card-text">Lenguage: {{coverDates.original_language}}</span>
         </div>
     </div>    
